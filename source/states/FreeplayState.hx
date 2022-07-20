@@ -24,6 +24,9 @@ import lime.utils.Assets;
 import flixel.tweens.FlxEase; 
 import modding.PolymodHandler;
 import modding.ModList;
+#if MODS_ALLOWED
+import sys.FileSystem;
+#end
 
 using StringTools;
 
@@ -211,6 +214,12 @@ class FreeplayState extends MusicBeatState
                 #if android
 		PolymodHandler.loadMods();
 		#end
+		
+		/*#if MODS_ALLOWED
+			if(!sys.FileSystem.exists(Paths.modsJson(songLowercase + '/' + poop)) && !sys.FileSystem.exists(Paths.json(songLowercase + '/' + poop))) {
+			#else
+			if(!OpenFlAssets.exists(Paths.json(songLowercase + '/' + poop))) {
+			#end
 
 		#if PRELOAD_ALL
 		var leText:String = "Press X to reset song score and rank | Press Y to play Song Audio | C + LEFT and RIGHT to change song speed";
