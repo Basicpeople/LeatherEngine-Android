@@ -3,6 +3,10 @@ package modding;
 #if polymod
 import polymod.Polymod;
 
+#if MODS_ALLOWED
+import sys.FileSystem;
+#end
+
 class PolymodHandler
 {
     public static var metadataArrays:Array<String> = [];
